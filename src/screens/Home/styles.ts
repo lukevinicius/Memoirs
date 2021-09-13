@@ -1,4 +1,5 @@
 import styled from "styled-components/native";
+import FeatherIcon from 'react-native-vector-icons/Feather'
 import { TouchableOpacity } from 'react-native';
 import { RFValue } from 'react-native-responsive-fontsize';
 
@@ -38,7 +39,10 @@ export const Button = styled(TouchableOpacity)`
   width: 35%;
   align-items: center;
 `
-export const Content = styled.View`
+export const ButtonPost = styled(TouchableOpacity)`
+  background-color: ${({ theme }) => theme.colors.primary};
+`
+export const Content = styled(TouchableOpacity)`
   flex-direction: row;
 `
 export const Image = styled.Image`
@@ -54,15 +58,23 @@ export const ViewJournal = styled.View`
 export const TitlePost = styled.Text`
   color: ${({ theme }) => theme.colors.secundary};
   font-family: ${({ theme }) => theme.fonts.bold};
-  font-size: 16px;
-`
-export const DateJournal = styled.Text`
-  color: ${({ theme }) => theme.colors.secundary};
-  font-family: ${({ theme }) => theme.fonts.medium};
   font-size: 14px;
 `
 export const Description = styled.Text`
   color: ${({ theme }) => theme.colors.text};
   font-family: ${({ theme }) => theme.fonts.medium};
-  font-size: 12px;
+  font-size: 13px;
 `
+export const InfoPost = styled.Text`
+  flex-direction: row;
+  margin-top: 8px;
+`
+export const InfoText = styled.Text`
+  color: ${({ theme }) => theme.colors.primary};
+  font-family: ${({ theme }) => theme.fonts.medium};
+  font-size: 12px;
+  margin-right: 10px;
+`
+export const Icon = styled(FeatherIcon)`
+  color: ${({ theme }) => theme.colors.primary};
+`;

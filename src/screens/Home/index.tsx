@@ -1,9 +1,11 @@
 import React, { useState, useCallback, useEffect } from 'react'
 import { FlatList } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import { parseISO, format } from 'date-fns';
+
 import {
   Container,
   View,
-  Button,
   Image,
   ViewCategory,
   ImageCategory,
@@ -11,9 +13,12 @@ import {
   ViewJournal,
   TitlePost,
   Description,
-  DateJournal,
   Content,
-  Text
+  Text,
+  InfoPost,
+  ButtonPost,
+  InfoText,
+  Icon
 } from './styles'
 
 import { useAuth } from '../../hooks/auth';
@@ -25,44 +30,24 @@ import { api } from '../../services/api';
 
 interface JournalProps {
   id: string;
-  date: Date;
+  date: string;
   body: string;
   category: string;
 }
 
-const Item = ({ date, body, category }: JournalProps) => (
-  <Content>
-    <Image source={imageTravel} />
-    <ViewJournal>
-      <TitlePost>
-        {date}
-      </TitlePost>
-      <Description maxLength={30}>
-        {body}
-      </Description>
-      <Description>
-        {category}
-      </Description>
-    </ViewJournal>
-  </Content>
-);
-
 export function Home() {
+  const navigation = useNavigation();
   const { user } = useAuth();
   const [data, setData] = useState<Journal[]>();
-
-  useEffect(() => {
-    findPosts()
-  }, []);
 
   async function findPosts() {
     const response = await api.get(`posts/${user.id}`)
     setData(response.data);
   }
 
-  const renderItem = useCallback(({ item }) => (
-    <Item id={item.id} date={item.createdAt} body={item.body} category={item.category} />
-  ), []);
+  useEffect(() => {
+    findPosts()
+  }, []);
 
   return (
     <>
@@ -84,8 +69,33 @@ export function Home() {
           <Title>Posts Recentes</Title>
           <FlatList
             data={data}
-            renderItem={renderItem}
-            keyExtractor={item => item.id}
+            keyExtractor={item => item._id}
+            renderItem={({item}) => (
+              <Content onPress={() =>
+                navigation.navigate('PostDetails', {
+                  postId: item.postId,
+                })
+              }>
+                <Image source={imageTravel} />
+                <ViewJournal>
+                  <TitlePost>
+                    {format(parseISO(String(item.createdAt)), 'dd/MM/yyyy')}
+                  </TitlePost>
+                  <Description numberOfLines={1}>
+                    {item.body}
+                  </Description>
+                  <InfoPost>
+                    <InfoText style={{marginRight: 10}}>
+                      <Icon name="clock" size={12} color="#666360" />
+                      {format(parseISO(String(item.createdAt)), 'HH:mm')}
+                    </InfoText>
+                    <InfoText>
+                      <Icon name="bookmark" size={12} color="#666360" />{item.category}
+                    </InfoText>
+                  </InfoPost>
+                </ViewJournal>
+              </Content>
+            )}
           />
         </View>
       </Container>
