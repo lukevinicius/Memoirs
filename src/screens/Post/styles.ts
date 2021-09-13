@@ -11,10 +11,10 @@ export const Image = styled.Image`
   width: 100%;
   height: 150px;
 `
-export const DateJournal = styled.Text`
+export const DatePost = styled.Text`
   color: ${({ theme }) => theme.colors.secundary};
-  font-family: ${({ theme }) => theme.fonts.regular};
-  font-size: 14px;
+  font-family: ${({ theme }) => theme.fonts.medium};
+  font-size: 12px;
 `
 export const Title = styled.Text`
   color: ${({ theme }) => theme.colors.secundary};
@@ -23,7 +23,9 @@ export const Title = styled.Text`
 `
 export const Text = styled.Text`
   color: ${({ theme }) => theme.colors.text};
+  margin-top: 8px;
   font-family: ${({ theme }) => theme.fonts.medium};
+  text-align: justify;
   font-size: 12px;
 `
 export const Button = styled(TouchableOpacity)`

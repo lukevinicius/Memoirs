@@ -29,7 +29,7 @@ export default function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <StatusBar barStyle="light-content" translucent={true} />
+      <StatusBar barStyle="default" backgroundColor={theme.colors.primaryDark} translucent />
       <AuthProvider>
         <Routes />
       </AuthProvider>
