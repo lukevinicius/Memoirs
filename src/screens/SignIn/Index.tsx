@@ -59,7 +59,8 @@ const SignIn: React.FC = () => {
         enabled>
       <ScrollView
         keyboardShouldPersistTaps="handled"
-        contentContainerStyle={{flex: 1}}>
+        contentContainerStyle={{flex: 1}}
+      >
       <Container>
         <Title>
           Faça seu login para começar

@@ -36,19 +36,19 @@ export function Post() {
         </DatePost>
         <Title>{data.title}</Title>
         <InfoPost>
-          <InfoText>
+          {/* <InfoText>
             <Icon name="clock" size={12} color="#666360" />
-            {/* {format(parseISO(String(data.createdAt)), 'HH:mm')} */}
-          </InfoText>
+            {format(parseISO(String(data.createdAt)), 'HH:mm')}
+          </InfoText> */}
           {/* <InfoText>
             <Icon name="bookmark" size={12} color="#666360" />{data.category}
           </InfoText> */}
         </InfoPost>
         <Text>{data.body}</Text>
       </Container>
-      <View style={{ backgroundColor: theme.colors.primaryDark }}>
+      {/* <View style={{ backgroundColor: theme.colors.primaryDark }}>
         <Button title="Edit" icon="edit" onPress={() => { }} />
-      </View>
+      </View> */}
     </>
   )
 }

@@ -36,6 +36,9 @@ export function AppStackRoutes(){
       <Screen
         name="PostDetails"
         component={Post}
+        options={{
+          headerTitle: '',
+        }}
       />
       <Screen
         name="AddPost"
