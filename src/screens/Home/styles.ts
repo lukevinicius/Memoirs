@@ -11,7 +11,6 @@ export const View = styled.View`
   padding: 0px 30px;
 `
 export const Title = styled.Text`
-  padding: 50px 0 0 0;
   color: ${({ theme }) => theme.colors.text};
   font-family: ${({ theme }) => theme.fonts.bold};
   font-size: ${RFValue(24)}px;
@@ -25,6 +24,11 @@ export const ImageCategory = styled.Image`
   margin: 10px 10px 10px 0;
   width: 140px;
   height: 120px;
+`
+export const ViewPost = styled.View`
+  padding: 50px 0 0 0;
+  justify-content: space-between;
+  flex-direction: row;
 `
 export const Text = styled.Text`
   font-family: ${({ theme }) => theme.fonts.regular};
@@ -53,6 +57,7 @@ export const Image = styled.Image`
 `
 export const ViewJournal = styled.View`
   flex: 1;
+  margin: 30px 20px 10px 0;
   justify-content: center;
 `
 export const TitlePost = styled.Text`

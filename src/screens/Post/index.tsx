@@ -40,9 +40,9 @@ export function Post() {
             <Icon name="clock" size={12} color="#666360" />
             {/* {format(parseISO(String(data.createdAt)), 'HH:mm')} */}
           </InfoText>
-          <InfoText>
+          {/* <InfoText>
             <Icon name="bookmark" size={12} color="#666360" />{data.category}
-          </InfoText>
+          </InfoText> */}
         </InfoPost>
         <Text>{data.body}</Text>
       </Container>

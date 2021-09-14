@@ -4,11 +4,10 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 
 const Tab = createBottomTabNavigator();
-const Stack = createStackNavigator();
 
 import { Home } from '../screens/Home';
-import { AppStackRoutes } from './stack.routes';
 import { Post } from '../screens/Post';
+import { AppStackRoutes } from '../routes/stack.routes'
 import Profile from '../screens/profile'
 
 import theme from '../global/styles/theme';
@@ -27,7 +26,7 @@ const AppRoutes: React.FC = () => (
       tabBarInactiveTintColor: theme.colors.primary
     }}
     >
-      <Tab.Screen name="Home" component={Home}
+      <Tab.Screen name="AppStack" component={AppStackRoutes}
       options={{
         tabBarIcon: (({ size, color }) => (
           <Icon
@@ -48,10 +47,6 @@ const AppRoutes: React.FC = () => (
           />
         ))
         }}
-      />
-      <Tab.Screen
-        name="PostDetails"
-        component={Post}
       />
     </Tab.Navigator>
   </>

@@ -9,6 +9,7 @@ import {
   Image,
   ViewCategory,
   ImageCategory,
+  ViewPost,
   Title,
   ViewJournal,
   TitlePost,
@@ -18,7 +19,8 @@ import {
   InfoPost,
   ButtonPost,
   InfoText,
-  Icon
+  Icon,
+  Button
 } from './styles'
 
 import { useAuth } from '../../hooks/auth';
@@ -47,6 +49,9 @@ export function Home() {
 
   useEffect(() => {
     findPosts()
+    return () => {
+      setData([]); // This worked for me
+    };
   }, []);
 
   return (
@@ -66,17 +71,23 @@ export function Home() {
           </Button>
         </View> */}
         <View>
-          <Title>Posts Recentes</Title>
+          <ViewPost>
+            <Title>Posts Recentes</Title>
+            <Button onPress={() => navigation.navigate('AppStack', { screen: 'AddPost' })}>
+              <Text>Novo  +</Text>
+            </Button>
+          </ViewPost>
           <FlatList
             data={data}
             keyExtractor={item => item._id}
             renderItem={({item}) => (
               <Content onPress={() =>
-                navigation.navigate('PostDetails', {
-                  postId: item.postId,
+                navigation.navigate('AppStack', {
+                  screen: 'PostDetails',
+                  params: {postId: item.postId},
                 })
               }>
-                <Image source={imageTravel} />
+                {/* <Image source={imageTravel} /> */}
                 <ViewJournal>
                   <TitlePost>
                     {format(parseISO(String(item.createdAt)), 'dd/MM/yyyy')}
@@ -89,9 +100,9 @@ export function Home() {
                       <Icon name="clock" size={12} color="#666360" />
                       {format(parseISO(String(item.createdAt)), 'HH:mm')}
                     </InfoText>
-                    <InfoText>
+                    {/* <InfoText>
                       <Icon name="bookmark" size={12} color="#666360" />{item.category}
-                    </InfoText>
+                    </InfoText> */}
                   </InfoPost>
                 </ViewJournal>
               </Content>
