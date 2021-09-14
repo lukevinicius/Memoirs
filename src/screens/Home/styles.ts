@@ -10,6 +10,11 @@ export const Container = styled.View`
 export const View = styled.View`
   padding: 0px 30px;
 `
+export const ViewEmpty = styled.View`
+  margin-top: 150px;
+  justify-content: center;
+  align-items: center;
+`
 export const Title = styled.Text`
   color: ${({ theme }) => theme.colors.text};
   font-family: ${({ theme }) => theme.fonts.bold};

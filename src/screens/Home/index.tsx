@@ -6,9 +6,7 @@ import { parseISO, format } from 'date-fns';
 import {
   Container,
   View,
-  Image,
-  ViewCategory,
-  ImageCategory,
+  ViewEmpty,
   ViewPost,
   Title,
   ViewJournal,
@@ -17,15 +15,12 @@ import {
   Content,
   Text,
   InfoPost,
-  ButtonPost,
   InfoText,
   Icon,
   Button
 } from './styles'
 
 import { useAuth } from '../../hooks/auth';
-
-import imageTravel from '../../assets/Images/1.jpg'
 
 import { Journal } from '../../models/Journal'
 import { api } from '../../services/api';
@@ -84,37 +79,43 @@ export function Home() {
               <Text>Novo  +</Text>
             </Button>
           </ViewPost>
-          <FlatList
-            data={data}
-            keyExtractor={item => item._id}
-            renderItem={({item}) => (
-              <Content onPress={() =>
-                navigation.navigate('AppStack', {
-                  screen: 'PostDetails',
-                  params: {postId: item.postId},
-                })
-              }>
-                {/* <Image source={imageTravel} /> */}
-                <ViewJournal>
-                  <TitlePost>
-                    {format(parseISO(String(item.createdAt)), 'dd/MM/yyyy')}
-                  </TitlePost>
-                  <Description numberOfLines={1}>
-                    {item.body}
-                  </Description>
-                  <InfoPost>
-                    <InfoText style={{marginRight: 10}}>
-                      <Icon name="clock" size={12} color="#666360" />
-                      {format(parseISO(String(item.createdAt)), 'HH:mm')}
-                    </InfoText>
-                    {/* <InfoText>
-                      <Icon name="bookmark" size={12} color="#666360" />{item.category}
-                    </InfoText> */}
-                  </InfoPost>
-                </ViewJournal>
-              </Content>
-            )}
-          />
+            {data === null ?
+            <FlatList
+              data={data}
+              keyExtractor={item => item._id}
+              renderItem={({item}) => (
+                <Content onPress={() =>
+                  navigation.navigate('AppStack', {
+                    screen: 'PostDetails',
+                    params: {postId: item.postId},
+                  })
+                }>
+                  {/* <Image source={imageTravel} /> */}
+                  <ViewJournal>
+                    <TitlePost>
+                      {format(parseISO(String(item.createdAt)), 'dd/MM/yyyy')}
+                    </TitlePost>
+                    <Description numberOfLines={1}>
+                      {item.body}
+                    </Description>
+                    <InfoPost>
+                      <InfoText style={{marginRight: 10}}>
+                        <Icon name="clock" size={12} color="#666360" />
+                        {format(parseISO(String(item.createdAt)), 'HH:mm')}
+                      </InfoText>
+                      {/* <InfoText>
+                        <Icon name="bookmark" size={12} color="#666360" />{item.category}
+                      </InfoText> */}
+                    </InfoPost>
+                  </ViewJournal>
+                </Content>
+              )}
+            />
+            : <ViewEmpty>
+                <TitlePost>Adicione uma Memoria</TitlePost>
+                <TitlePost>Ela vai aparecer aqui</TitlePost>
+              </ViewEmpty>
+          }
         </View>
       </Container>
     </>
