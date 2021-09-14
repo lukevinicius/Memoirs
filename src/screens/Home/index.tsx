@@ -39,12 +39,19 @@ interface JournalProps {
 
 export function Home() {
   const navigation = useNavigation();
-  const { user } = useAuth();
+  const { user, signOut } = useAuth();
   const [data, setData] = useState<Journal[]>();
 
   async function findPosts() {
-    const response = await api.get(`posts/${user.id}`)
-    setData(response.data);
+    await api.get(`posts/${user.id}`)
+    .then((res) => {
+      setData(res.data);
+    })
+    .catch((err) => {
+      if (err.response.status === 403) {
+        signOut()
+      }
+    })
   }
 
   useEffect(() => {
