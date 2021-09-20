@@ -14,7 +14,7 @@ import { api } from '../../services/api';
 
 export function AddPost() {
   const navigation = useNavigation()
-  const { user } = useAuth();
+  const { user, signOut } = useAuth();
   const [title, setTitle] = useState('')
   const [body, setBody] = useState('')
 
@@ -41,10 +41,11 @@ export function AddPost() {
       .then(() => {
         navigation.navigate('Home')
       })
-      .catch((res) => {
-        /* Alert.alert('Opa', res); */
-        console.log(res)
-      });
+      .catch((err) => {
+        if (err.response.status === 403) {
+          signOut()
+        }
+      })
     } catch (error) {
       if(error instanceof Yup.ValidationError) {
         Alert.alert('Opa', error.message);
