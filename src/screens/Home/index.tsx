@@ -25,13 +25,6 @@ import { useAuth } from '../../hooks/auth';
 import { Journal } from '../../models/Journal'
 import { api } from '../../services/api';
 
-interface JournalProps {
-  id: string;
-  date: string;
-  body: string;
-  category: string;
-}
-
 export function Home() {
   const [refreshing, setRefreshing] = useState(false);
   const navigation = useNavigation();
@@ -97,13 +90,13 @@ export function Home() {
           <ViewPost>
             <Title>Suas Memorias</Title>
             <Button onPress={
-              () => email ? navigation.navigate('AppStack', { screen: 'AddPost' })
+              () => user.emailConfirm ? navigation.navigate('AppStack', { screen: 'AddPost' })
               : navigation.navigate('AppStack', { screen: 'ConfirmEmail' })
               }>
               <Text>Novo  +</Text>
             </Button>
           </ViewPost>
-            {data === null ?
+            {data ?
             data.map(item => (
               <Content key={item._id} onPress={() =>
                 navigation.navigate('AppStack', {
@@ -114,7 +107,7 @@ export function Home() {
                 {/* <Image source={imageTravel} /> */}
                 <ViewJournal>
                   <TitlePost>
-                    {format(parseISO(String(item.createdAt)), 'dd/MM/yyyy')}
+                  {item.title} - {format(parseISO(String(item.createdAt)), 'dd/MM/yyyy')}
                   </TitlePost>
                   <Description numberOfLines={1}>
                     {item.body}

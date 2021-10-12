@@ -10,7 +10,9 @@ import { Button } from '../screens/AddPost/styles';
 
 import { Post } from '../screens/Post';
 import { AddPost } from '../screens/AddPost';
+import { UpdatePost } from '../screens/UpdatePost';
 import { Home } from '../screens/Home';
+import { ConfirmEmail } from '../screens/ConfirmEmail';
 
 
 export function AppStackRoutes(){
@@ -41,10 +43,31 @@ export function AppStackRoutes(){
         }}
       />
       <Screen
+        name="ConfirmEmail"
+        component={ConfirmEmail}
+        options={{
+          headerTitle: 'Verificação de Email',
+        }}
+      />
+      <Screen
         name="AddPost"
         component={AddPost}
         options={{
           headerTitle: 'Adicionar Post',
+          /* headerLeft: () => (
+            <Button
+              onPress={() => { navigation.navigate('Home') }}
+            >
+              <Text>Voltar</Text>
+            </Button>
+          ), */
+        }}
+      />
+      <Screen
+        name="UpdatePost"
+        component={UpdatePost}
+        options={{
+          headerTitle: 'Edição de Memoria',
           /* headerLeft: () => (
             <Button
               onPress={() => { navigation.navigate('Home') }}

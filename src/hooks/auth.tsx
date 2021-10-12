@@ -16,6 +16,7 @@ interface User {
   name: string;
   username: string;
   email: string;
+  emailConfirm: boolean;
   token: string;
 }
 
@@ -66,6 +67,7 @@ function AuthProvider({ children } : AuthProviderProps) {
         name: user.name,
         username: user.username,
         /* photo: user.picture, */
+        emailConfirm: user.emailConfirm,
         token: accessToken
       };
 

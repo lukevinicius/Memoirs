@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { parseISO, format } from 'date-fns';
-import { useRoute } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 
 import Button from '../../components/Button'
 import { Container, DatePost, Title, Text } from './styles'
@@ -15,8 +15,9 @@ interface Params {
 }
 
 export function Post() {
-  const route = useRoute()
   const [data, setData] = useState<Journal>({} as Journal)
+  const route = useRoute()
+  const navigation = useNavigation()
   const { postId } = route.params as Params
 
   async function findPosts() {
@@ -46,9 +47,17 @@ export function Post() {
         </InfoPost>
         <Text>{data.body}</Text>
       </Container>
-      {/* <View style={{ backgroundColor: theme.colors.primaryDark }}>
-        <Button title="Edit" icon="edit" onPress={() => { }} />
-      </View> */}
+      <View style={{ backgroundColor: theme.colors.primaryDark }}>
+        <Button
+          title="Edit"
+          icon="edit"
+          onPress={
+            () => navigation.navigate('AppStack', {
+                            screen: 'UpdatePost',
+                            params: {postId: data.postId},
+            })}
+        />
+      </View>
     </>
   )
 }
