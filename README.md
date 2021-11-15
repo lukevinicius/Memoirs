@@ -34,7 +34,7 @@ Start the server
 
 ## Screenshots
 
-![App Screenshot](https://www.behance.net/gallery/115844237/MyDay-journal-diary-mobile-app-design/modules/660915005)
+![App Screenshot](https://mir-s3-cdn-cf.behance.net/project_modules/fs/8b7c0c115844237.605630ddd4b4a.jpg)
 
 
 ## Authors
