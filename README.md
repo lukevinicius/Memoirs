@@ -19,9 +19,9 @@
   <sub> Made with 💖 by
     <a href="https://github.com/lukevinicius">Lucas vinicius.
   </sub>
-  <sub> Design UI 💖 by
+  <p> Design UI 💖 by
     <a href="https://www.behance.net/amirgrafix">Amir islam.
-  </sub>
+  </p>
 </div>
 
 # 📌 Contents
