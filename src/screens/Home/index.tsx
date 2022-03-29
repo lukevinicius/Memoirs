@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useEffect } from 'react'
-import { ScrollView, FlatList, RefreshControl, ToastAndroid } from 'react-native';
+import { ScrollView, RefreshControl } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { parseISO, format } from 'date-fns';
 
