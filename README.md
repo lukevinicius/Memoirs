@@ -16,12 +16,12 @@
 </p>
 
 <div align="center">
-  <sub> Made with 💖 by
-    <a href="https://github.com/lukevinicius">Lucas vinicius.
-  </sub>
-  <p> Design UI 💖 by
-    <a href="https://www.behance.net/amirgrafix">Amir islam.
+  <p> Made with 💖 by
+    <a href="https://github.com/lukevinicius">Lucas vinicius.</a>
   </p>
+  <sub> Design UI 💖 by
+    <a href="https://www.behance.net/amirgrafix">Amir islam.</a>
+  </sub>
 </div>
 
 # 📌 Contents
